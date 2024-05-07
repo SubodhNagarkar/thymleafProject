@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+</head>
+
+<body>
+
+    <center>
+        <h1>User Form</h1>
+
+        <form th:action="@{/processForm}" method="post" th:object="${userObj}">
+
+            <input type="hidden" th:field="*{uId}">
+            First Name: <input type="text" id="" th:field="*{firstName}">
+
+            <br>
+            Last Name: <input type="text" th:field="*{lastName}">
+
+            <br>
+
+            Email: <input type="email" th:field="*{email}" id="">
+
+            <br>
+            Country:
+            <select th:field="*{country}" id="">
+                <option th:each="tempCountry:${countries}" th:value="${tempCountry}" th:text="${tempCountry}">India
+                </option>
+            </select>
+            <br>
+            Gender:
+            <input type="radio" th:field="*{gender}" th:each="tempGender:${genders}" th:text="${tempGender}"
+                th:value="${tempGender}">
+            <br>
+            Skills:
+            <input type="checkbox" th:field="*{userSkills}" th:each="tempSkill:${skills}" th:text="${tempSkill}"
+                th:value="${tempSkill}">
+            <!-- <select th:field="*{country}" id="">
+                <option th:value="India">India</option>
+                <option th:value="China">China</option>
+                <option th:value="Nepal">Nepal</option>
+                <option th:value="USA">USA</option>
+            </select> -->
+            <!-- <input type="radio" th:field="*{country}" th:value="India"> India
+            <input type="radio" th:field="*{country}" th:value="China"> China
+            <input type="radio" th:field="*{country}" th:value="Nepal"> Nepal
+            <input type="radio" th:field="*{country}" th:value="USA"> USA -->
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </center>
+</body>
+
+</html>
